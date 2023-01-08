@@ -19,6 +19,7 @@ app.MapGet
     ("/customers",
     async (CustomerDb db) => await db.Customers.ToListAsync()
     );
+app.MapGet("/customers/{id}", async (CustomerDb db, int id) => await db.Customers.FindAsync(id));
 app.MapPost("/customers", async (CustomerDb db,Customer cus) =>
 {
     await db.Customers.AddAsync(cus);
